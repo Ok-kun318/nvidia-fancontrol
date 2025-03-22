@@ -5,19 +5,33 @@ nvidia-smi
 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits
 ```
 の2つが実行できるか確認してください
-また
+また、
 ```
 nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=100
 sleep 5
 nvidia-settings -a GPUFanControlState=0
 ```
 を実行してファンの速度が5秒間100%になるか確認してください
+
+できない場合は
+
+```
+
+cd /./etc/X11/
+sudo -s
+gnome-text-editor Xwrapper.config
+```
+そしたらテキストエディタがい開くと思うので
+needs_root_rights=yes
+のあとに
+allowed_users=console
+と入れます
+
+## 例
 # 使い方
 fan_temp_config
 fan_speed_config
 に数字を入れます
-
-## 例
 
 ```
 fan_temp_config=(40 45 50 55 60)
