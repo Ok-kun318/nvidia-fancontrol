@@ -45,11 +45,10 @@ while true; do
 				break
 			fi
 		done
-
 		set_fan_speed "$TARGET_FAN_SPEED"
 
 		# **常に温度とファン速度を表示**
-		echo "GPU Temp: $TEMP°C, Fan Speed: $TARGET_FAN_SPEED%"
+		echo "GPU Temp: $TEMP°C, Fan Speed: $TARGET_FAN_SPEED% be:$before_fan_speed%"
 	fi
 	sleep $INTERVAL
 done
