@@ -3,6 +3,7 @@
 fan_temp_config=(40 45 50 55 60)
 fan_speed_config=(30 35 40 45 100)
 
+trap 'reset_fan_control; echo "終了します。";exit' SIGINT
 # ループ間隔（秒）
 INTERVAL=1
 
@@ -45,11 +46,7 @@ while true; do
 			fi
 		done
 
-		# ファン速度が変更された場合のみ設定を更新
-		if [ "$before_fan_speed" -ne "$TARGET_FAN_SPEED" ]; then
-			set_fan_speed "$TARGET_FAN_SPEED"
-			before_fan_speed="$TARGET_FAN_SPEED" # 更新
-		fi
+		set_fan_speed "$TARGET_FAN_SPEED"
 
 		# **常に温度とファン速度を表示**
 		echo "GPU Temp: $TEMP°C, Fan Speed: $TARGET_FAN_SPEED%"
