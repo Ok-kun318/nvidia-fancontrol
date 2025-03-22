@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # 温度とファン速度の設定
 fan_temp_config=(40 45 50 55 60)
 fan_speed_config=(30 35 40 45 100)
@@ -46,7 +45,7 @@ while true; do
 			fi
 		done
 
-		# **現在のファン速度がターゲットと異なる場合のみ設定変更**
+		# ファン速度が変更された場合のみ設定を更新
 		if [ "$before_fan_speed" -ne "$TARGET_FAN_SPEED" ]; then
 			set_fan_speed "$TARGET_FAN_SPEED"
 			before_fan_speed="$TARGET_FAN_SPEED" # 更新
