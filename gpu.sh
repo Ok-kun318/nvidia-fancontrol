@@ -9,13 +9,13 @@ INTERVAL=1
 
 # 手動ファン制御を有効にする関数
 set_fan_speed() {
-	nvidia-settings -a GPUFanControlState=1
-	nvidia-settings -a GPUTargetFanSpeed=$1
+	sudo nvidia-settings -a GPUFanControlState=1
+	sudo nvidia-settings -a GPUTargetFanSpeed=$1
 }
 
 # 自動制御に戻す関数
 reset_fan_control() {
-	nvidia-settings -a GPUFanControlState=0
+	sudo nvidia-settings -a GPUFanControlState=0
 }
 
 # スクリプト開始時に現在のファン速度を取得
